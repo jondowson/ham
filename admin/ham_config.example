@@ -1,0 +1,82 @@
+#!/bin/bash
+
+# script_name: ham_config.sh
+# author: jd
+# about: one-stop shop for configuring ham
+# note: order of variables is important !!
+
+#-----------------------------------------------------DON'T-CHANGE-!!
+# used when displaying messages
+LOGO="H.A.M"
+
+# HAM code repository
+CODE_HOME="git@bitbucket.org:semblent/ham.git"
+
+# where AWS cli + AWS Boto look for config files
+USER_HOME="${HOME}"
+
+# location of main parent folders
+SCRIPT_HOME="${HAM_HOME}/"
+ADMIN="${HAM_HOME}/admin/"
+MENUS="${HAM_HOME}/menus/"
+EXECUTE_LOCAL="${HAM_HOME}/execute_local/"
+EXECUTE_REMOTE="${HAM_HOME}/execute_remote/"
+TABLES="${HAM_HOME}/tables/"
+LOGS="${ADMIN}logs/"
+
+# location of main HAM sub-folders
+BUILD_LOCAL="${EXECUTE_LOCAL}build/"
+MISC_LOCAL="${EXECUTE_LOCAL}misc/"
+SEND_LOCAL="${EXECUTE_LOCAL}send/"
+START_LOCAL="${EXECUTE_LOCAL}start/"
+STOP_LOCAL="${EXECUTE_LOCAL}stop/"
+BUILD_REMOTE="${EXECUTE_REMOTE}build/"
+CONNECT_REMOTE="${EXECUTE_REMOTE}connect/"
+CONFIG_REMOTE="${EXECUTE_REMOTE}config/"
+START_REMOTE="${EXECUTE_REMOTE}start/"
+STATUS_REMOTE="${EXECUTE_REMOTE}status/"
+STOP_REMOTE="${EXECUTE_REMOTE}stop/"
+SEND_REMOTE="${EXECUTE_REMOTE}send/"
+
+#-----------------------------------------------------CHANGE-!!
+
+# is this machine a mac or ubuntu ?
+OS="ubuntu"
+#OS="mac"
+
+# tag used to show who created an aws server on the aws console
+# please change to your initials in capitals
+USER_INITIALS="YOUR_INITIALS"
+
+# Amazon credentials - get yours from aws IAM user page
+AWS_ACCESS_KEY="change_to_access_key"
+AWS_SECRET_KEY="change_to_secret_access_key"
+
+# aws region where servers are stored
+# leave unless you want to use another world region
+AWS_DEFAULT_REGION="eu-west-1"
+
+# where to write aws config file to
+# you can leave this as is
+AWS_CONFIG_FILE="${USER_HOME}.aws/config"
+
+# uncomment and change to location of your aws pem keys directory - leave trailing /
+# also remember to give your keys correct permissions - i.e. 'chmod 400 *.pem'
+# KEYS="/home/dick-van-dyke/keys/"
+
+# change to false to loose the pithy banner humour
+PITH="true"
+
+# time in seconds to allow AWS instances to wake from a stopped state
+AWAKEN="60"
+
+# change mode to server if installing this on an ec2 server
+# server mode uses private rather than public ips
+MODE="local"
+#MODE="server"
+
+#-----------------------------------------------------DATASTAX-!!
+
+# time in seconds to allow a dse node to restart
+# allow more time for more data to be loaded - typically 60 seconds is a safe bet
+DSE_RESTART="60"

@@ -1,0 +1,66 @@
+#!/usr/local/bin/bash
+
+# script_name: ham
+# author: jd
+# about: menu driven application to facilitate easier management of aws servers
+
+# exit when script tries to use undeclared variables
+set -o nounset
+# exit when a command fails
+set -o errexit
+# useful for debug
+# set -o xtrace
+# strict bug detection
+set -euo pipefail
+
+# ham versioning
+VERSION="1.9.9.1"
+
+# 1 - include main config file and the aws-cli calls script
+source ${HAM_HOME}/admin/ham_config.sh
+source ${STATUS_REMOTE}status_calls.sh
+source ${MISC_LOCAL}format.sh
+# add all keys to the ssh agent application
+ssh-add ${KEYS}*.pem
+# clear any existing failed remote ssh connection attempts
+ssh-add -D
+clear
+
+#--------------------------------
+
+# 2 - write aws and boto config files locally
+source ${MISC_LOCAL}write_boto_config.sh
+source ${MISC_LOCAL}write_aws_config.sh
+
+#--------------------------------
+
+# 3 - refresh local tables...
+source ${TABLES}tables_refresh.sh
+tables_refresh
+#     ... then build arrays
+#     ... call as script not function otherwise arrays scope is local only
+#     ... source it so that the arrays are available globally
+source ${TABLES}tables_arrays.sh
+
+#--------------------------------
+
+# 4 - include the static and dynamic menu generator so they are available globally
+source ${MENUS}menu.sh
+source ${MENUS}dynamic_menu.sh
+source ${MENUS}dynamic_menu_inline.sh
+#     ...after tables_refresh update the dynamically created menu options
+source ${MENUS}menus_refresh.sh
+menus_refresh
+
+#--------------------------------
+
+# 5 - get all the ham scripts and source them so that their functions are available
+#     ...don't bother sourcing the ham setup script
+cd ${HAM_HOME}
+files="$(find . -name "*.sh*" | grep -v "setup_ham.sh")"
+for file in $(printf "%s\n" "$files"); do
+    [ -f $file ] && . $file
+done
+
+# function call to start application
+menu_home

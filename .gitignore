@@ -1,0 +1,8 @@
+.idea/*
+admin/ham_config.sh
+admin/ham.cfg.bak
+admin/logs/*
+menus/*
+!menus/dynamic*
+!menus/menu*
+tables/*.txt

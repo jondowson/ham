@@ -1,0 +1,93 @@
+[
+    [
+        [
+            {
+                "instanceId": "i-0c2b47efa4823f92a"
+            }, 
+            {
+                "privIp": "172.31.241.123"
+            }, 
+            {
+                "pubIp": "54.72.47.146"
+            }
+        ]
+    ], 
+    [
+        [
+            {
+                "instanceId": "i-0574a410d3d5c5771"
+            }, 
+            {
+                "privIp": "172.31.240.5"
+            }, 
+            {
+                "pubIp": null
+            }
+        ]
+    ], 
+    [
+        [
+            {
+                "instanceId": "i-0c581c2aa6362212f"
+            }, 
+            {
+                "privIp": "172.31.240.100"
+            }, 
+            {
+                "pubIp": null
+            }
+        ]
+    ], 
+    [
+        [
+            {
+                "instanceId": "i-04017b130c3212989"
+            }, 
+            {
+                "privIp": "172.31.240.235"
+            }, 
+            {
+                "pubIp": null
+            }
+        ]
+    ], 
+    [
+        [
+            {
+                "instanceId": "i-0c161d7d0a2e1ff5b"
+            }, 
+            {
+                "privIp": "172.31.240.76"
+            }, 
+            {
+                "pubIp": null
+            }
+        ]
+    ], 
+    [
+        [
+            {
+                "instanceId": "i-06645794dd9f17474"
+            }, 
+            {
+                "privIp": "172.31.240.75"
+            }, 
+            {
+                "pubIp": null
+            }
+        ]
+    ], 
+    [
+        [
+            {
+                "instanceId": "i-00fba60c8ff9fa30c"
+            }, 
+            {
+                "privIp": "172.31.240.16"
+            }, 
+            {
+                "pubIp": null
+            }
+        ]
+    ]
+]
